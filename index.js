@@ -214,6 +214,9 @@ function renderPokemons(){
 function renderPokemon(){
   //select poke-container div
   const pokeDiv = document.querySelector("#poke-container")
+  pokemons.forEach((p)=> {
+    console.log(p.name)
+  })
   pokemons.forEach((poke)=> {
     const pokeCard = document.createElement("div")
     const pokeImg = document.createElement("img")
@@ -231,4 +234,13 @@ function renderPokemon(){
 }
 
 renderPokemon()
+const list = [1,2,3,4,5,6,7,8,9,10]
+const newList = list.map(x => x*2)
+console.log(newList)
+const words = ["spray", "limit", "elite", "exuberant", "destruction", "present"]
+const result = words.filter((word) => word.length > 5)
+console.log(result)
+const list2 = [5,12,8,113,45]
+const greaterThan = list2.find(x => x > 10)
+console.log(greaterThan)
 
