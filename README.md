@@ -12,7 +12,11 @@
 
 ### Deliverables
 
-1. Create a POST request when the comment form is submitted and render new comment optimistically
+1. Create a Post request for the form to create a new character when it is submitted
+
+2. When the card is clicked, display the comments associated with its character
+
+3. Create an input for new comments, when the comment form is submitted create a POST request to render the comment optimistically
 
 ## POST (Create)
 

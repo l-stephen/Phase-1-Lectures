@@ -15,27 +15,40 @@ function getPokemon(){
 
 
 getPokemon();
-
-pokeForm.addEventListener("submit", function (e) {
+//TODO: Refactor this code to be a function
+//create a function that makes a post request
+//this function should make a post request to the endpoint
+//use this function in a submit event listener, when the form is submitted
+function createPokemon(e){
   e.preventDefault();
   const name = document.querySelector("#name-input").value;
   const img = document.querySelector("#img-input").value;
-
   //create a new character with the udpated id, name, img, and likes
   let newChar = {
-    id: pokemon.length + 1, //or uuidv4()
+    id: e.id+1,
     name: name,
     img: img,
     likes: 0,
   };
+  fetch("http://localhost:3000/characters", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(newChar),
+  })
 
   renderPokemon(newChar);
   pokeForm.reset();
-});
+};
+pokeForm.addEventListener("submit", createPokemon)
 
-pokemon.forEach(function (character) {
-  renderPokemon(character);
-});
+//TODO: //create a function called renderComments that takes in a character as an argument, and displays it comments
+function renderComments(character) {
+  
+
+}
 
 function showCharacter(character){
   fetch(`http://localhost:3000/characters/${character.id}`)
@@ -54,6 +67,8 @@ function renderPokemon(char) {
   pokeCard.id = `poke-${char.id}`;
   pokeCard.addEventListener("click", () => {
     showCharacter(char);
+    //TODO: When the card is clicked, display the comments associated with its character using the render comment function
+    renderComments(char);
   })
 
   const pokeImg = document.createElement("img");
