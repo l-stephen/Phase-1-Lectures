@@ -48,7 +48,7 @@ pokeForm.addEventListener("submit", createPokemon)
 //this function should make a get request to the endpoint
 //use this function in a click event listener, when the pokeCard is clicked
 
-function displayComments(pokeCard, character) {
+function displayComments(character) {
   fetch(`http://localhost:3000/comments/${character.id}`)
   .then(response => response.json())
   .then(character => {
@@ -60,9 +60,25 @@ function displayComments(pokeCard, character) {
     //append comments to the div
     //commentsDiv.append(comments);
     //attach the commentsDiv to the pokeCard
-    card.appendChild(comments);
-    console.log(pokeCard)
+    card.append(comments);
   });
+}
+
+//TODO: Create a function called newComments to add new comments
+//when the comment form is submitted create a POST request to render the comment optimistically
+function newComments(){
+  const commentForm = document.createElement("form");
+  commentForm.id = "comment-form";
+  const commentInput = document.createElement("input");
+  commentInput.id = "comment-input";
+  commentInput.placeholder = "Add a comment";
+  const commentSubmit = document.createElement("input");
+  commentSubmit.type = "submit";
+  commentSubmit.value = "Submit";
+  const card = document.querySelector("#poke-show-card")
+  card.append(commentForm);
+  return commentForm;
+
 }
 
 function showCharacter(character){
@@ -81,8 +97,8 @@ function renderPokemon(char) {
   pokeCard.id = `poke-${char.id}`;
   pokeCard.addEventListener("click", () => {
     showCharacter(char);
-
-    displayComments(pokeCard, char);
+    displayComments(char);
+    newComments();
   })
 
   const pokeImg = document.createElement("img");
