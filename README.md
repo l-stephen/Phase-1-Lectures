@@ -16,8 +16,6 @@
 
 2. When the card is clicked, display the comments associated with its character
 
-3. Create a comment form for new comments, and when the comment form is submitted create a POST request to render the comment optimistically
-
 ## POST (Create)
 
 Posts send data to the server. The information is usually sent from a FORM, creating a resource in the database. A POST is typically for creating new data instead of updating data, like PUT or PATCH.
