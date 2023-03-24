@@ -66,7 +66,7 @@ function displayComments(character) {
 
 //TODO: Create a function called newComments to add new comments
 //when the comment form is submitted create a POST request to render the comment optimistically
-function newComments(){
+/*function newComments(){
   const commentForm = document.createElement("form");
   commentForm.id = "comment-form";
   const commentInput = document.createElement("input");
@@ -79,7 +79,7 @@ function newComments(){
   card.append(commentForm);
   return commentForm;
 
-}
+}*/
 
 function showCharacter(character){
   fetch(`http://localhost:3000/characters/${character.id}`)
