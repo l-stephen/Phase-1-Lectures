@@ -43,11 +43,26 @@ function createPokemon(e){
   pokeForm.reset();
 };
 pokeForm.addEventListener("submit", createPokemon)
+//TODO: create a function called displayComments to display the comments for each character
+//when the pokeCard is clicked
+//this function should make a get request to the endpoint
+//use this function in a click event listener, when the pokeCard is clicked
 
-//TODO: //create a function called renderComments that takes in a character as an argument, and displays it comments
-function renderComments(character) {
-  
-
+function displayComments(pokeCard, character) {
+  fetch(`http://localhost:3000/comments/${character.id}`)
+  .then(response => response.json())
+  .then(character => {
+    //display the comments for the character on the pokeCard div
+    const card = document.querySelector("#poke-show-card")
+    const comments = document.createElement("h4");
+    //display the content of the comments
+    comments.textContent = character.content;
+    //append comments to the div
+    //commentsDiv.append(comments);
+    //attach the commentsDiv to the pokeCard
+    card.appendChild(comments);
+    console.log(pokeCard)
+  });
 }
 
 function showCharacter(character){
@@ -60,15 +75,14 @@ function showCharacter(character){
   });
 }
 
-
 function renderPokemon(char) {
   const pokeCard = document.createElement("div");
   pokeCard.className = "poke-card";
   pokeCard.id = `poke-${char.id}`;
   pokeCard.addEventListener("click", () => {
     showCharacter(char);
-    //TODO: When the card is clicked, display the comments associated with its character using the render comment function
-    renderComments(char);
+
+    displayComments(pokeCard, char);
   })
 
   const pokeImg = document.createElement("img");

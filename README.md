@@ -16,7 +16,7 @@
 
 2. When the card is clicked, display the comments associated with its character
 
-3. Create an input for new comments, when the comment form is submitted create a POST request to render the comment optimistically
+3. Create an input for new comments, create a comment form, and when the comment form is submitted create a POST request to render the comment optimistically
 
 ## POST (Create)
 
