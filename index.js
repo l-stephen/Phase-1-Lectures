@@ -60,7 +60,7 @@ function displayComments(character) {
     //append comments to the div
     //commentsDiv.append(comments);
     //attach the commentsDiv to the pokeCard
-    card.append(comments);
+    card.appendChild(comments);
   });
 }
 
@@ -81,7 +81,6 @@ function renderPokemon(char) {
   pokeCard.addEventListener("click", () => {
     showCharacter(char);
     displayComments(char);
-    newComments();
   })
 
   const pokeImg = document.createElement("img");
