@@ -111,16 +111,10 @@ function renderPokemon(char) {
     e.stopPropagation();
     // increment the characters number of likes
     ++char.likes;
-    fetch(`http://localhost:3000/characters/${char.id}`,{
-      method:"PATCH",
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({likes: char.likes})
-    })
+    //update the likes using patch
     //render the new update pessimistically
-    //.then((r)=> r.json())
-    //.then(likesNum.textContent = char.likes)
+    //
+    //
     // update the DOM to reflect the new number of likes optimistically
     likesNum.textContent = char.likes;
   });
@@ -131,10 +125,8 @@ function renderPokemon(char) {
   deleteBtn.addEventListener("click", function (e) {
     //use e.stopPropogation() to stop the event from bubbling up to the parent element
     e.stopPropagation();
-    fetch(`http://localhost:3000/characters/${char.id}`, {
-      method: "DELETE",
-    })
-    //pokeCard.remove();
+    //remove comments using the delete
+    pokeCard.remove();
   });
 
   pokeCard.append(pokeImg, pokeName, pokeLikes, likesNum, likesBttn, deleteBtn);
