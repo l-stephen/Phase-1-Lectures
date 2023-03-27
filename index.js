@@ -63,75 +63,18 @@ function displayComments(character){
     card.appendChild(comments)
   })
 }
-const renderComment = (comment, commentsDiv,e) => {
-  const card = document.querySelector("#poke-show-card")
-  let li = document.createElement("li");
-  li.textContent = comment.content;
-  card.append(li);
-  return li;
-};
+//render new comments
 
-function commentsForm(){
-  let form = document.createElement("form");
-  form.id = "comment-form"
+//create a form to post new comments
 
-  let commentInput = document.createElement("input");
-  commentInput.type = "text";
-  commentInput.id = "comment-input";
-
-  let label = document.createElement("label");
-  label.className = "form-label";
-  label.textContent = "Leave a comment: ";
-  form.appendChild(label);
-
-  let submit = document.createElement("input");
-  submit.type = "submit";
-  submit.id = "submit";
-
-  form.append(commentInput, submit);
-
-  form.addEventListener('submit', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    let content = document.querySelector("#comment-input").value;
-
-    let characterId = parseInt(
-      document.querySelector("#poke-show-card").dataset.id
-    );
-
-    let newComment = {
-      content: content,
-      characterId: characterId,
-    };
-    fetch("http://localhost:3000/comments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(newComment),
-    })
-      .then(function (resp) {
-        return resp.json();
-      })
-      .then(function (comment) {
-        const commentsDiv = document.querySelector(
-          `#comment-card-${characterId}`
-        );
-        renderComment(comment, commentsDiv);
-      });
-
-  })
-  return form;
-
-}
+//call the comments form when you show the character card
 function showCharacter(character){
   fetch(`http://localhost:3000/characters/${character.id}`)
   .then(response => response.json())
   .then(character => {
     const pokeCard = renderPokemon(character);
     pokeCard.id = "poke-show-card";
-    pokeFormContainer.replaceChildren(commentsForm())
+    //
     pokeContainer.replaceChildren(pokeCard);
   });
 }
