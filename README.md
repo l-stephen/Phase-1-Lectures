@@ -1,5 +1,5 @@
 # Phase-1
-# Phase Objectives
+# Learning Objectives
 * Understand the fundamentals of JavaScript as a language, including functions and scope
 * Use data types and structures to solve problems in JavaScript
 * Identify and resolve bugs in code
